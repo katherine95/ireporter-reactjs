@@ -11,17 +11,13 @@ iReporter is a web application that enables any/every citizen to bring any form 
 
 ## Requirements
 
-For development, you will need Node.js installed on your environment and the node module `create-react-app` to generate a boilerplate version of a React application.
+For development, you will need Node.js installed on your environment.
 
     $ node --version
     v11.13.0
 
     $ npm --version
     6.7.0
-
-You will use npm to install the create-react-app command line interface (CLI) globally (-g).
-
-    $ npm install -g create-react-app
 
 ### Prerequisites
 
@@ -36,14 +32,18 @@ Html5, CSS3, ES6, ReactJs
 
 A normal user can perform the following :
 
+* Sign up and log in to the application.
+* Log in with facebook.
 * Create an incident record.
 * View posted incidents.
 * Edit and update an incident. 
 * Delete his/her own incident.
+* Reset password via email.
+* Share a record via twitter, facebook and linked in.
 
 An admin user can perform the following :
 
-* Update status of a posted incident record
+* Update status of a posted incident record.
 * View all incidents posted.
 
 
