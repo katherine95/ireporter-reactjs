@@ -2,22 +2,23 @@ import React from 'react';
 import '../App.css';
 import LoginForm from './LoginForm';
 
-export class Login extends React.Component {
-    constructor() {
-      super();
+import {withRouter} from "react-router-dom";
+
+class Login extends React.Component {
+    constructor(props) {
+      super(props);
       this.state = {
           username: '',
           password: '',
-          rememberMe: false
+          rememberMe: false,
         };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // fetchLogin(){}
     componentDidMount() {
-      console.log('ghello there')
+      console.log('I am already mounted')
     }
   
     handleChange(event) {
@@ -40,14 +41,19 @@ export class Login extends React.Component {
         ),})
         .then(response => response.json())
         .then(jsondata => {
-          console.log(jsondata.token)
-          localStorage.setItem('token', jsondata.token);
-          this.setState({
-            isLoaded: true,
-            data: jsondata
-        })
-      });
-      
+          if (jsondata.message === 'Wrong username or password') {
+            document.getElementById('alert').style.color = 'red';
+            document.getElementById('alert').innerHTML = jsondata.message;
+          } else {
+            console.log(jsondata);
+            console.log(jsondata.token);
+            localStorage.setItem('token', jsondata.token);
+            this.setState({
+              data: jsondata,
+            })
+            this.props.history.push('/signup');
+          }
+        });
     }
   
     render() {
@@ -64,3 +70,5 @@ export class Login extends React.Component {
       );
     }
   }
+
+export default withRouter(Login);

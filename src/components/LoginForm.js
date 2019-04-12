@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import '../App.css';
 
 
@@ -14,14 +14,15 @@ export default class LoginForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit} className="form">
+        <p id='alert'></p>
             <label>
                 Username:
-                <input type="text" name="username" value={value} onChange={handleChange} />
+                <input type="text" name="username" required value={value} onChange={handleChange} />
             </label>
             <br />
             <label>
                 Password:
-                <input type="password" name="password" value={value} onChange={handleChange} />
+                <input type="password" name="password" required value={value} onChange={handleChange} />
             </label>
             <br />
             <label>
@@ -31,7 +32,7 @@ export default class LoginForm extends Component {
             <button type="submit" value="Submit" >Log In</button>
             <br />
             <br />
-            <p>Create an account?</p><br /><button type="submit" value="Submit">Sign Up</button>
+            <p>Create an account?</p><br /><button value="Submit"><a href="/signup">Register</a></button>
         </form>
       </div>
     )
