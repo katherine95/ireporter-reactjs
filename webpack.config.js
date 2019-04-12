@@ -18,8 +18,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
-              }
+            },
+                {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+            
         ]
+    },
+    devServer: {
+        contentBase: '/',
+        historyApiFallback: true
     },
     plugins: [
         new HWP({
