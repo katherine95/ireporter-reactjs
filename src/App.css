@@ -1,4 +1,18 @@
-.App {
+.App-header {
+  background: url(./images/bgg.jpg) no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: sans-serif;
+  opacity: 0.89;
+}
+/* .App {
     text-align: center;
   }
   
@@ -14,6 +28,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: sans-serif;
+    opacity: 0.75;
+}
   }
   
   .App-link {
@@ -121,7 +142,7 @@
     outline: none;
     height: 40px;
   } */
-  input {
+  /* input {
       width: 40%;
       border: 0;
       font-family: inherit;
@@ -146,5 +167,4 @@
       background: #08a015;
       border-radius: 8px;
       color: white;
-  }
-  
+  } */
