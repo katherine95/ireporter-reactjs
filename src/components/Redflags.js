@@ -33,9 +33,8 @@ export default class Redflags extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log(data.results[0].id);
+        console.log(data.results)
         const redflags = data.results;
-        // console.log(redflags[0]);
         const table = document.getElementById("redflags");
         redflags.map(redflag => {
           const new_row = table.insertRow();
@@ -51,15 +50,7 @@ export default class Redflags extends Component {
           createdBy.innerHTML = redflag.createdBy;
           status.innerHTML = redflag.status;
           createdOn.innerHTML = redflag.createdOn;
-        //   viewRedflag.innerHTML = document.getElementById('viewrecord');
-        //   let viewRedflag = document.getElementById("viewrecord").innerHTML
-        //   viewRedflag.innerHTML = `<Button variant="primary" onClick=${this.handleShow()}>View</Button>`;
-          
-            viewRedflag.innerHTML = `<a href='/redflag?recordId=${redflag.id}'>View</a>`;
-          //   `<a href='/redflagrecordId=${redflag.id}'>View</a>`;
-          //   this.setState({
-          //       redflagId : redflag.id
-          //   })
+          viewRedflag.innerHTML = `<a href='/redflag?recordId=${redflag.id}'>View</a>`;
         });
       });
   }
@@ -81,29 +72,6 @@ export default class Redflags extends Component {
           </thead>
           <tbody />
         </Table>
-        <Button variant="primary" onClick={this.handleShow} id="viewrecord">
-          View
-        </Button>
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
-              Update
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
-              Save
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
-              Delete
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     );
   }

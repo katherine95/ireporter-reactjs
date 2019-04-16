@@ -9,8 +9,6 @@ import ViewRedflag from "./components/ViewRedflag";
 
 class App extends Component {
   render() {
-    // console.log(redflag.id)
-    // let redflagPath = `/redflagrecordId=${redflag.id}`;
     console.log(this.props)
     return (
       <div>
