@@ -1,10 +1,27 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
+import { Table, Button, Modal } from "react-bootstrap";
 import "../App.css";
 
 const token = localStorage.getItem("token");
 
 export default class Redflags extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      show: false
+    };
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+   // window.alert('test');
+  }
+
   componentDidMount() {
     fetch("https://ireporter-drf-api-staging.herokuapp.com/api/redflags/", {
       headers: {
@@ -16,9 +33,9 @@ export default class Redflags extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.results);
+        // console.log(data.results[0].id);
         const redflags = data.results;
-        console.log(redflags[0]);
+        // console.log(redflags[0]);
         const table = document.getElementById("redflags");
         redflags.map(redflag => {
           const new_row = table.insertRow();
@@ -34,7 +51,15 @@ export default class Redflags extends Component {
           createdBy.innerHTML = redflag.createdBy;
           status.innerHTML = redflag.status;
           createdOn.innerHTML = redflag.createdOn;
-          viewRedflag.innerHTML = `<a href="/">View</a>`;
+        //   viewRedflag.innerHTML = document.getElementById('viewrecord');
+        //   let viewRedflag = document.getElementById("viewrecord").innerHTML
+        //   viewRedflag.innerHTML = `<Button variant="primary" onClick=${this.handleShow()}>View</Button>`;
+          
+            viewRedflag.innerHTML = `<a href='/redflag?recordId=${redflag.id}'>View</a>`;
+          //   `<a href='/redflagrecordId=${redflag.id}'>View</a>`;
+          //   this.setState({
+          //       redflagId : redflag.id
+          //   })
         });
       });
   }
@@ -54,10 +79,32 @@ export default class Redflags extends Component {
               <th>View</th>
             </tr>
           </thead>
-          <tbody>
-          </tbody>
+          <tbody />
         </Table>
+        <Button variant="primary" onClick={this.handleShow} id="viewrecord">
+          View
+        </Button>
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Update
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
-    )
+    );
   }
 }
