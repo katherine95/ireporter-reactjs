@@ -112,6 +112,7 @@ export class Signup extends React.Component {
                 .then(res => res.json())
                 .then(respdata => {
                   console.log(respdata)
+                  this.props.history.push("/redflags");
                 })
             })
         }
