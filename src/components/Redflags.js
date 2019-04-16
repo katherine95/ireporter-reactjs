@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Table, Button, Modal } from "react-bootstrap";
+import { Table, Button, Navbar } from "react-bootstrap";
 import "../App.css";
 
 const token = localStorage.getItem("token");
+const username = localStorage.getItem("username");
 
 export default class Redflags extends Component {
   constructor(props, context) {
@@ -19,7 +20,7 @@ export default class Redflags extends Component {
 
   handleShow() {
     this.setState({ show: true });
-   // window.alert('test');
+    // window.alert('test');
   }
 
   componentDidMount() {
@@ -33,7 +34,7 @@ export default class Redflags extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.results)
+        console.log(data.results);
         const redflags = data.results;
         const table = document.getElementById("redflags");
         redflags.map(redflag => {
@@ -50,7 +51,9 @@ export default class Redflags extends Component {
           createdBy.innerHTML = redflag.createdBy;
           status.innerHTML = redflag.status;
           createdOn.innerHTML = redflag.createdOn;
-          viewRedflag.innerHTML = `<a href='/redflag?recordId=${redflag.id}'>View</a>`;
+          viewRedflag.innerHTML = `<a href='/redflag?recordId=${
+            redflag.id
+          }'>View</a>`;
         });
       });
   }
@@ -58,7 +61,18 @@ export default class Redflags extends Component {
   render() {
     return (
       <div>
-        <h1>Redflags</h1>
+        <Navbar>
+          <Navbar.Brand href="#home"><h1>Redflags</h1></Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+          <button type="button" className="btn btn-primary">
+            + Create Redflag
+          </button>
+            <Navbar.Text>
+              Logged in: <b>{username}</b>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Navbar>
         <Table id="redflags" striped bordered hover>
           <thead>
             <tr>

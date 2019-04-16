@@ -15,27 +15,7 @@ let redflagId = url.href.substring(count + 1);
 console.log(redflagId);
 
 export default class ViewRedflag extends Component {
-  // constructor() {
-  //   super();
-  //   this.setState = {
-  //     title: "",
-  //     comment: ""
-  //   };
-  //     Image: []
-  // Video: null
-  // comment: "redflag20"
-  // createdBy: "adminwzswsw"
-  // createdOn: "2019-04-15T18:58:03.017872Z"
-  // facebook: "http://www.facebook.com/sharer.php?u=https://ireporter-drf-api-staging.herokuapp.com/api/redflags/50/&quote=Checkout this red-flag"
-  // id: 50
-  // incident_type: "red-flag"
-  // linkedIn: "http://www.linkedin.com/shareArticle?url=https://ireporter-drf-api-staging.herokuapp.com/api/redflags/50/&title=Checkout this red-flag"
-  // location: "45, 50"
-  // mail: "mailto:?subject=Checkout this red-flag read&body=https://ireporter-drf-api-staging.herokuapp.com/api/redflags/50/"
-  // status: "draft"
-  // title: "redflag2"
-  // twitter: "https://twitter.com/share?url=https://ireporter-drf-api-staging.herokuapp.com/api/redflags/50/&amp;text=Checkout this red-flag"
-  // url: "https://ireporter-drf-api-staging.herokuapp.com/api/redf
+
   componentDidMount() {
     fetch(
       `https://ireporter-drf-api-staging.herokuapp.com/api/redflags/${redflagId}/`,
@@ -51,7 +31,8 @@ export default class ViewRedflag extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data.data);
-        console.log(data.data.title);
+        console.log(data.data.createdBy);
+        localStorage.setItem("username", data.data.createdBy);
         console.log(redflagId);
         const incidentType = document.getElementById("type");
         const title = document.getElementById("title");
