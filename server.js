@@ -1,8 +1,8 @@
-var express = require('express');
+import express, { static } from 'express';
 var app = express();
 var path = required('path');
 
-app.use(express.static("dist"));
+app.use(static("dist"));
 app.get('*', (req, res) =>{
    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
