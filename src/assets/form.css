@@ -1,0 +1,14 @@
+@media (min-width: 1024px) {
+  .signin-form {
+    display: inline-block;
+    padding: 0px 10px 40px 40px;
+    width: 40%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1%;
+    border-radius: 5px;
+  }
+}

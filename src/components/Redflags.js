@@ -1,26 +1,19 @@
 import React, { Component } from "react";
 import { Table, Button, Navbar } from "react-bootstrap";
+// import { jwt_decode } from "jwt-decode";
 import "../App.css";
 
 const token = localStorage.getItem("token");
+// var decoded_token = jwt_decode(token);
+// console.log(decoded_token);
 const username = localStorage.getItem("username");
 
 export default class Redflags extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
       show: false
     };
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
-  handleClose() {
-    this.setState({ show: false });
-  }
-
-  handleShow() {
-    this.setState({ show: true });
-    // window.alert('test');
   }
 
   componentDidMount() {
@@ -62,12 +55,14 @@ export default class Redflags extends Component {
     return (
       <div>
         <Navbar>
-          <Navbar.Brand href="#home"><h1>Redflags</h1></Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <h1>Redflags</h1>
+          </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-          <button type="button" className="btn btn-primary">
-            + Create Redflag
-          </button>
+            <button type="button" className="btn btn-primary">
+              + Create Redflag
+            </button>
             <Navbar.Text>
               Logged in: <b>{username}</b>
             </Navbar.Text>

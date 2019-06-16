@@ -18,7 +18,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    console.log("I am already mounted");
+    localStorage.clear();
   }
 
   handleChange(event) {
@@ -44,8 +44,6 @@ class Login extends React.Component {
           document.getElementById("alert").style.color = "red";
           document.getElementById("alert").innerHTML = jsondata.message;
         } else {
-          console.log(jsondata);
-          console.log(jsondata.token);
           localStorage.setItem("token", jsondata.token);
           this.setState({
             data: jsondata

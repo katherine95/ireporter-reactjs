@@ -27,7 +27,6 @@ export class Signup extends React.Component {
   }
 
   handleSubmit() {
-    // error.innerHTML = '';
     event.preventDefault();
     fetch('https://ireporter-drf-api-staging.herokuapp.com/api/auth/signup/', {
       method: 'POST',
@@ -49,17 +48,13 @@ export class Signup extends React.Component {
     })
       .then(response => response.json())
       .then(jsondata => {
-        // console.log(jsondata.email[0])
-        console.log(jsondata.mobile_number)
-        console.log(Object.keys(jsondata));
+        console.log(Object.values(jsondata));
         if (jsondata.username[0] === 'user with this username already exists.') {
           try {
             var error = document.getElementById('username_error')
             error.innerHTML = jsondata.username[0]
-            console.log(jsondata.username)
             error.style.color = "red"
           } catch (e) {
-            console.log(e);
           }
         } else if (jsondata.mobile_number === 'The phone number entered is not valid.') {
           try {
@@ -111,7 +106,6 @@ export class Signup extends React.Component {
               })
                 .then(res => res.json())
                 .then(respdata => {
-                  console.log(respdata)
                   this.props.history.push("/redflags");
                 })
             })
