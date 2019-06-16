@@ -1,6 +1,6 @@
 import express, { static } from 'express';
 var app = express();
-var path = required('path');
+var path = require('path');
 
 app.use(static("dist"));
 app.get('*', (req, res) =>{

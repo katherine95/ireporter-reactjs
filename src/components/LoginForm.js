@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-// import "../App.css";
+import '../assets/form.css';
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -11,15 +11,14 @@ export default class LoginForm extends Component {
     const { handleChange, handleSubmit, value, rememberMe } = this.props;
 
     return (
-      <div>
+      <div className='signin-form'>
         <p id="alert"></p>
         <Form onSubmit={handleSubmit} className="form">
-          
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Username"
+              placeholder="Enter Email"
               name="username"
               required
               value={value}
