@@ -20,7 +20,7 @@
   "homepage": "https://github.com/katherine95/ireporter-reactjs#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "path": "^0.12.7",
     "jwt-decode": "^2.2.0",
     "query-string": "^6.4.2",
